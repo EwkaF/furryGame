@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n//# sourceURL=webpack:///./js/app.js?");
+eval("\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nconsole.log('hello');\n\nvar Furry = function Furry(x, y, direction) {\n    _classCallCheck(this, Furry);\n\n    this.x = 0;\n    this.y = 0;\n    this.direction = \"right\";\n};\n\nvar Coin = function Coin(x, y) {\n    _classCallCheck(this, Coin);\n\n    this.x = Math.floor(Math.random() * 10);\n    this.y = Math.floor(Math.random() * 10);\n};\n\nvar Game = function Game(board, furry, coin, score) {\n    _classCallCheck(this, Game);\n\n    this.board = document.getElementById(\"board\");\n    this.furry = new Furry();\n    this.coin = new Coin();\n    this.score = 0;\n};\n\n//# sourceURL=webpack:///./js/app.js?");
 
 /***/ })
 
