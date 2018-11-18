@@ -31,12 +31,32 @@ class Game{
         showCoin(){
             this.board[ this.index(this.coin.x,this.coin.y) ].classList.add('coin');
         }
+        startGame(){
+            this.idSetInterval = setInterval(()=> {
+                this.moveFurry();
+              }, 250);
+        }
+        moveFurry(){
+            if(this.furry.direction === "right") {
+                this.furry.x = this.furry.x + 1;
+            } else if ( this.furry.direction === "left" ){
+                this.furry.x = this.furry.x - 1;
+            } else if (this.furry.direction === "up"){
+                this.furry.y += 1;
+            } else if (this.furry.direction === "down"){
+                this.furry.y -= 1;
+            }
+
+            this.showFurry()
+
+        }
     
 }
 
 var game = new Game();
 game.showFurry();
 game.showCoin();
+game.startGame()
 
 // console.log(new Furry())
 // console.log(new Coin())
