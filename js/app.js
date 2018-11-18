@@ -16,10 +16,28 @@ class Coin{
 }
 
 class Game{
-    constructor(board, furry, coin, score){
-        this.board = document.getElementById("board");
-        this.furry = new Furry;
-        this.coin = new Coin;
+    constructor(board, furry, coin, score, index){
+        this.board = document.querySelectorAll('#board div');;
+        this.furry = new Furry();
+        this.coin = new Coin();
         this.score = 0;
-    }
+        this.index = function(x,y) {
+            return x + (y * 10);
+          }
+        }
+        showFurry(){
+            this.board[this.index(this.furry.x,this.furry.y)].classList.add('furry');
+        }
+        showCoin(){
+            this.board[ this.index(this.coin.x,this.coin.y) ].classList.add('coin');
+        }
+    
 }
+
+var game = new Game();
+game.showFurry();
+game.showCoin();
+
+// console.log(new Furry())
+// console.log(new Coin())
+// console.log(new Game())
