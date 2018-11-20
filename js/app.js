@@ -26,6 +26,7 @@ class Game{
           }
         }
         showFurry(){
+            
             this.board[this.index(this.furry.x,this.furry.y)].classList.add('furry');
         }
         showCoin(){
@@ -37,6 +38,7 @@ class Game{
               }, 250);
         }
         moveFurry(){
+            this.hideVisibleFurry()
             if(this.furry.direction === "right") {
                 this.furry.x = this.furry.x + 1;
             } else if ( this.furry.direction === "left" ){
@@ -50,6 +52,12 @@ class Game{
             this.showFurry()
 
         }
+
+        hideVisibleFurry(){
+        document.querySelector(".furry").classList.remove('furry')
+        console.log(document.querySelector(".furry"))
+         }
+
     
 }
 
