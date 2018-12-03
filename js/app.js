@@ -1,5 +1,5 @@
-console.log('hello')
-
+document.addEventListener("DOMContentLoaded", function () {
+   
 class Furry{
     constructor(x,y,direction){
     this.x = 0;
@@ -26,17 +26,19 @@ class Game{
           }
         }
         showFurry(){
-            
             this.board[this.index(this.furry.x,this.furry.y)].classList.add('furry');
         }
+
         showCoin(){
             this.board[ this.index(this.coin.x,this.coin.y) ].classList.add('coin');
         }
+
         startGame(){
             this.idSetInterval = setInterval(()=> {
                 this.moveFurry();
               }, 250);
         }
+
         moveFurry(){
             this.hideVisibleFurry()
             if(this.furry.direction === "right") {
@@ -48,23 +50,43 @@ class Game{
             } else if (this.furry.direction === "down"){
                 this.furry.y -= 1;
             }
-
             this.showFurry()
-
         }
 
         hideVisibleFurry(){
         document.querySelector(".furry").classList.remove('furry')
-        console.log(document.querySelector(".furry"))
+         }
+
+         turnFurry(event){
+            switch (event.which) {
+                case 37:
+                  this.furry.direction = 'left';
+                  break;
+                case 38:
+                  this.furry.direction = "right";
+                  break;
+                case 39:
+                  this.furry.direction = "up";
+                  break;
+                case 40:
+                  this.furry.direction = "down";
+                  break;
+            }
          }
 
     
 }
 
+document.addEventListener('keydown', function(event){
+    Game.turnFurry(event);
+});
 var game = new Game();
 game.showFurry();
 game.showCoin();
 game.startGame()
+
+
+})
 
 // console.log(new Furry())
 // console.log(new Coin())
