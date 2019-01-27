@@ -51,7 +51,16 @@ class Game{
               }, 250);
         }
 
-        
+        checkCoinCollision(){
+            if (this.furry.x === this.coin.x && this.furry.y === this.coin.y){
+                console.log("to samo miejsce");
+                this.board[ this.index(this.coin.x,this.coin.y) ].classList.remove('coin');
+                this.score ++;
+                document.querySelector("#score strong").innerText = this.score;
+                this.coin = new Coin();
+                this.showCoin();
+            }
+        }
 
         moveFurry(){
             
@@ -64,7 +73,8 @@ class Game{
             } else if (this.furry.direction === "down"){
                 this.furry.y -= 1;
             }
-            this.showFurry()
+            this.showFurry();
+            this.checkCoinCollision();
         }
 
        
