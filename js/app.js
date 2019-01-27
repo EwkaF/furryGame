@@ -17,15 +17,27 @@ class Coin{
 
 class Game{
     constructor(board, furry, coin, score, index){
-        this.board = document.querySelectorAll('#board div');;
+        this.board = document.querySelectorAll('#board div');
         this.furry = new Furry();
         this.coin = new Coin();
         this.score = 0;
         this.index = function(x,y) {
             return x + (y * 10);
           }
+
+        var self = this;
         }
+        
+        hideVisibleFurry(){
+            let hideFurry = document.querySelector(".furry");
+            if (hideFurry !== null){
+                hideFurry.classList.remove('furry');
+            }
+            
+             }
+
         showFurry(){
+            this.hideVisibleFurry();
             this.board[this.index(this.furry.x,this.furry.y)].classList.add('furry');
         }
 
@@ -39,12 +51,14 @@ class Game{
               }, 250);
         }
 
+        
+
         moveFurry(){
-            this.hideVisibleFurry()
+            
             if(this.furry.direction === "right") {
-                this.furry.x = this.furry.x + 1;
+                this.furry.x += 1;
             } else if ( this.furry.direction === "left" ){
-                this.furry.x = this.furry.x - 1;
+                this.furry.x -=1;
             } else if (this.furry.direction === "up"){
                 this.furry.y += 1;
             } else if (this.furry.direction === "down"){
@@ -53,23 +67,24 @@ class Game{
             this.showFurry()
         }
 
-        hideVisibleFurry(){
-        document.querySelector(".furry").classList.remove('furry')
-         }
+       
+        
 
          turnFurry(event){
+             console.log("Działą");
+             console.log(event);
             switch (event.which) {
                 case 37:
                   this.furry.direction = 'left';
                   break;
                 case 38:
-                  this.furry.direction = "right";
+                  this.furry.direction = "down";
                   break;
                 case 39:
-                  this.furry.direction = "up";
+                  this.furry.direction = "right";
                   break;
                 case 40:
-                  this.furry.direction = "down";
+                  this.furry.direction = "up";
                   break;
             }
          }
@@ -77,13 +92,16 @@ class Game{
     
 }
 
-document.addEventListener('keydown', function(event){
-    Game.turnFurry(event);
-});
+
 var game = new Game();
 game.showFurry();
 game.showCoin();
-game.startGame()
+game.startGame();
+
+document.addEventListener('keydown', event => {
+    game.turnFurry(event);
+});
+
 
 
 })
