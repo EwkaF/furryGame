@@ -110,8 +110,13 @@ class Game{
                  console.log("ałt");
                  clearInterval(this.idSetInterval);
                  this.hideVisibleFurry();
+                 var over = document.querySelector('#over');
+                 var newPre = document.createElement('pre');
+                 newPre.innerText = "Your score:" + this.score;
+                 over.parentElement.appendChild(newPre)
+                 over.classList.remove('invisible');
                  return true;
-             }
+u             }
              else{
                  return false;
              }
