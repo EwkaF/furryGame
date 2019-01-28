@@ -73,8 +73,14 @@ class Game{
             } else if (this.furry.direction === "down"){
                 this.furry.y -= 1;
             }
-            this.showFurry();
-            this.checkCoinCollision();
+
+            // this.gameOver();
+            if (!this.gameOver()){
+                this.showFurry();
+                this.checkCoinCollision();
+            }
+            
+            
         }
 
        
@@ -97,6 +103,18 @@ class Game{
                   this.furry.direction = "up";
                   break;
             }
+         }
+
+         gameOver(){
+             if( this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9){
+                 console.log("ałt");
+                 clearInterval(this.idSetInterval);
+                 this.hideVisibleFurry();
+                 return true;
+             }
+             else{
+                 return false;
+             }
          }
 
     
