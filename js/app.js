@@ -110,10 +110,8 @@ class Game{
                  console.log("ałt");
                  clearInterval(this.idSetInterval);
                  this.hideVisibleFurry();
-                 var over = document.querySelector('#over');
-                 var newPre = document.createElement('pre');
-                 newPre.innerText = "Your score:" + this.score;
-                 over.appendChild(newPre);
+                 var pre = document.querySelector('#over pre');
+                 pre.innerText = "Your score:" + this.score;
                  over.classList.remove('invisible');
                  return true;
              }
@@ -124,16 +122,23 @@ class Game{
 
     
 }
+document.querySelector('#start button').addEventListener('click',(e) => {
+
+    document.querySelector('#start').classList.add('invisible');
+    document.querySelector('#score').classList.remove('invisible');
+    document.querySelector('#board').classList.remove('invisible');
+    var game = new Game();
+    game.showFurry();
+    game.showCoin();
+    game.startGame();
+    
+    document.addEventListener('keydown', event => {
+        game.turnFurry(event);
+    });
+
+})
 
 
-var game = new Game();
-game.showFurry();
-game.showCoin();
-game.startGame();
-
-document.addEventListener('keydown', event => {
-    game.turnFurry(event);
-});
 
 
 
