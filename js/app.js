@@ -113,6 +113,7 @@ class Game{
                  var pre = document.querySelector('#over pre');
                  pre.innerText = "Your score:" + this.score;
                  over.classList.remove('invisible');
+                 document.querySelector('.coin').classList.remove('coin');
                  return true;
              }
              else{
@@ -138,7 +139,20 @@ document.querySelector('#start button').addEventListener('click',(e) => {
 
 })
 
+document.querySelector('#over button').addEventListener('click',(e) => {
+    this.score = 0;
+    document.querySelector("#score strong").innerText = this.score;
+    document.querySelector('#over').classList.add('invisible');
+    var game = new Game();
+    game.showFurry();
+    game.showCoin();
+    game.startGame();
+    
+    document.addEventListener('keydown', event => {
+        game.turnFurry(event);
+    });
 
+})
 
 
 
