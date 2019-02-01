@@ -41,12 +41,12 @@ section#score div {
 
 
 .furry {
-  background-image: url('../images/furry.png');
+  background-image: url('../images/krolik.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
 .coin {
-  background-image: url('../images/coin.png');
+  background-image: url('../images/marchew.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -66,6 +66,12 @@ section#start, section#over {
 section#start h1, section#over  h1{
   font-size: 100px;
   padding:10px;
+}
+
+section#start pre{
+  font-size: 40px;
+  font-weight: bolder;
+  color: brown;
 }
 section#over pre {
   display: inline-block;
