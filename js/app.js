@@ -15,11 +15,19 @@ class Coin{
     }
 }
 
+class Wolf{
+    constructor(x,y){
+        this.x = Math.floor(Math.random() * 10);
+        this.y = Math.floor(Math.random() * 10);
+    }
+}
+
 class Game{
     constructor(board, furry, coin, score, index){
         this.board = document.querySelectorAll('#board div');
         this.furry = new Furry();
         this.coin = new Coin();
+        this.wolf = new Wolf();
         this.score = 0;
         this.index = function(x,y) {
             return x + (y * 10);
@@ -36,13 +44,37 @@ class Game{
             
              }
 
+             hideVisibleWolf(){
+                let hideWolf = document.querySelector(".fox");
+                if (hideWolf !== null){
+                    hideWolf.classList.remove('fox');
+                }
+                
+                 }    
+
         showFurry(){
             this.hideVisibleFurry();
             this.board[this.index(this.furry.x,this.furry.y)].classList.add('furry');
         }
 
         showCoin(){
+            console.log(this.coin)
             this.board[ this.index(this.coin.x,this.coin.y) ].classList.add('coin');
+        }
+
+        showWolf(){
+            
+                this.board[ this.index(this.wolf.x,this.wolf.y) ].classList.add('fox');
+                
+        }
+
+        showWolfInterval(){
+            var wolfInterval = setInterval(() => {
+                // console.log(this.fox)
+                this.showWolf();
+                
+            }, 500);
+            setTimeout(() => this.hideVisibleWolf(), 500);
         }
 
         startGame(){
@@ -82,9 +114,6 @@ class Game{
             
             
         }
-
-       
-        
 
          turnFurry(event){
              console.log("Działą");
@@ -131,6 +160,7 @@ document.querySelector('#start button').addEventListener('click',(e) => {
     var game = new Game();
     game.showFurry();
     game.showCoin();
+    game.showWolfInterval();
     game.startGame();
     
     document.addEventListener('keydown', event => {

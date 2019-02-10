@@ -38,8 +38,6 @@ section#score div {
 }
 
 
-
-
 .furry {
   background-image: url('../images/krolik.png');
   background-repeat: no-repeat;
@@ -50,6 +48,19 @@ section#score div {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.fox{
+  background-image: url('../images/fox.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* section#start{
+  background-image: url('../images/marchew.png');
+  background-size: 90px 90px;
+  /* background-size: contain; */
+ 
+/* } */
 
 section#start, section#over {
   position: fixed;
@@ -62,6 +73,7 @@ section#start, section#over {
   background-color: rgba(255, 255, 255, 0.75);
   text-align: center;
 }
+
 
 section#start h1, section#over  h1{
   font-size: 100px;
