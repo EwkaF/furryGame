@@ -71,10 +71,11 @@ class Game{
         showWolfInterval(){
             var wolfInterval = setInterval(() => {
                 // console.log(this.fox)
+                this.wolf = new Wolf();
                 this.showWolf();
-                
+                setTimeout(() => this.hideVisibleWolf(), 1000);
             }, 500);
-            setTimeout(() => this.hideVisibleWolf(), 500);
+            
         }
 
         startGame(){
