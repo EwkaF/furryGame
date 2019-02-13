@@ -55,12 +55,6 @@ section#score div {
   background-size: cover;
 }
 
-/* section#start{
-  background-image: url('../images/marchew.png');
-  background-size: 90px 90px;
-  /* background-size: contain; */
- 
-/* } */
 
 section#start, section#over {
   position: fixed;

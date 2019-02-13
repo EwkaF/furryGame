@@ -63,13 +63,11 @@ class Game{
         }
 
         showWolf(){
-            
                 this.board[ this.index(this.wolf.x,this.wolf.y) ].classList.add('fox');
-                
         }
 
         showWolfInterval(){
-            var wolfInterval = setInterval(() => {
+            this.wolfInterval = setInterval(() => {
                 // console.log(this.fox)
                 setTimeout(() => {
                     this.wolf = new Wolf();
@@ -113,6 +111,7 @@ class Game{
             if (!this.gameOver()){
                 this.showFurry();
                 this.checkCoinCollision();
+                
             }
             
             
@@ -138,10 +137,12 @@ class Game{
          }
 
          gameOver(){
-             if( this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9){
+             if( this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9 || (this.furry.x === this.wolf.x && this.furry.y === this.wolf.y)){
                  console.log("ałt");
                  clearInterval(this.idSetInterval);
+                 clearInterval(this.wolfInterval);
                  this.hideVisibleFurry();
+                 this.hideVisibleWolf();
                  var pre = document.querySelector('#over pre');
                  pre.innerText = "Your score:" + this.score;
                  over.classList.remove('invisible');
@@ -179,6 +180,7 @@ document.querySelector('#over button').addEventListener('click',(e) => {
     var game = new Game();
     game.showFurry();
     game.showCoin();
+    game.showWolfInterval();
     game.startGame();
     
     document.addEventListener('keydown', event => {
